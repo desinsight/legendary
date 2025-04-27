@@ -1,72 +1,56 @@
 import Image from "next/image";
-import Link from "next/link";
+import { PlusIcon } from "@heroicons/react/24/outline";
+import CollectionView from "@/components/CollectionView";
+import { dummyItems } from "@/data/dummy";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-20">
-        <div className="flex flex-col items-center text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-            Legendary
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-300">
-            Discover, Collect, and Trade Unique Digital Assets
-          </p>
-          <div className="flex gap-4">
-            <Link 
-              href="/collection"
-              className="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-full font-semibold transition-colors"
-            >
-              Explore Collection
-            </Link>
-            <Link 
-              href="/auction"
-              className="px-8 py-3 border border-purple-600 hover:bg-purple-600/20 rounded-full font-semibold transition-colors"
-            >
-              View Auctions
-            </Link>
-          </div>
-        </div>
+    <div className="container mx-auto px-4 py-8">
+      {/* Collection Header */}
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-2xl font-bold">나의 소장 컬렉션</h1>
+        <button className="flex items-center space-x-2 text-blue-600 hover:text-blue-700">
+          <PlusIcon className="h-5 w-5" />
+          <span>새 아이템 추가</span>
+        </button>
       </div>
 
-      {/* Features Section */}
-      <div className="container mx-auto px-4 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 bg-gray-800/50 rounded-xl">
-            <h3 className="text-xl font-semibold mb-4">Discover</h3>
-            <p className="text-gray-400">Explore unique digital assets from talented creators around the world.</p>
-          </div>
-          <div className="p-6 bg-gray-800/50 rounded-xl">
-            <h3 className="text-xl font-semibold mb-4">Collect</h3>
-            <p className="text-gray-400">Build your collection of rare and valuable digital items.</p>
-          </div>
-          <div className="p-6 bg-gray-800/50 rounded-xl">
-            <h3 className="text-xl font-semibold mb-4">Trade</h3>
-            <p className="text-gray-400">Buy, sell, and trade your digital assets in our secure marketplace.</p>
-          </div>
+      {/* Collection Grid */}
+      <CollectionView items={dummyItems.map(item => ({
+        id: item.id,
+        title: item.title,
+        imageUrl: item.imageUrl,
+        price: 0,
+        season: "2023 SS",
+        edition: "Limited Edition",
+        creator: {
+          name: item.creator,
+          imageUrl: `https://i.pravatar.cc/150?u=${item.id}` // 임시 프로필 이미지
+        }
+      }))} />
+
+      {/* Featured Items */}
+      <div className="mt-16">
+        <h2 className="text-2xl font-bold mb-8">추천 아이템</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {dummyItems.slice(0, 2).map(item => (
+            <div key={item.id} className="relative aspect-[16/9] rounded-2xl overflow-hidden">
+              <div className="absolute inset-0">
+                <Image
+                  src={item.imageUrl}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+                <h3 className="text-white text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-gray-200">{item.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 border-t border-gray-800">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-gray-400">© 2024 Legendary. All rights reserved.</p>
-          </div>
-          <div className="flex gap-6">
-            <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
-              About
-            </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
-              Terms
-            </Link>
-            <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
-              Privacy
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

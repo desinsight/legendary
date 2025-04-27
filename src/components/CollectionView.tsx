@@ -1,11 +1,18 @@
 import ItemCard from "./ItemCard";
 
+interface Creator {
+  name: string;
+  imageUrl: string;
+}
+
 interface Item {
   id: string;
   title: string;
   imageUrl: string;
   price: number;
-  creator: string;
+  season?: string;
+  edition?: string;
+  creator: Creator;
 }
 
 interface CollectionViewProps {
@@ -23,8 +30,9 @@ export default function CollectionView({ items }: CollectionViewProps) {
             id={item.id}
             title={item.title}
             imageUrl={item.imageUrl}
-            price={item.price}
             creator={item.creator}
+            season={item.season}
+            edition={item.edition}
           />
         ))}
       </div>
