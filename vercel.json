@@ -1,0 +1,27 @@
+{
+  "name": "legendary",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/c/:path*",
+      "destination": "/collection/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/a/:path*",
+      "destination": "/auction/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/ai/:path*",
+      "destination": "/ai-recommend/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/cm/:path*",
+      "destination": "/community/:path*",
+      "permanent": true
+    }
+  ]
+} 

@@ -5,10 +5,12 @@ import "@fontsource/pretendard/600.css";
 import "@fontsource/pretendard/700.css";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { ToastProvider } from "@/contexts/ToastContext";
 
 export const metadata: Metadata = {
-  title: "디자이너스 소장템",
-  description: "디자이너스 소장템 - 나만의 특별한 아이템을 소장하세요",
+  title: "Legendary",
+  description: "Legendary - 나만의 특별한 아이템을 소장하세요",
 };
 
 export default function RootLayout({
@@ -19,10 +21,14 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="font-pretendard">
-        <Navbar />
-        <main className="min-h-screen bg-gray-50">
-          {children}
-        </main>
+        <ToastProvider>
+          <AuthProvider>
+            <Navbar />
+            <main className="min-h-screen bg-gray-50">
+              {children}
+            </main>
+          </AuthProvider>
+        </ToastProvider>
       </body>
     </html>
   );

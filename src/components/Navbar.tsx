@@ -1,40 +1,47 @@
+'use client';
+
 import Link from 'next/link';
-import { MagnifyingGlassIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function Navbar() {
-  return (
-    <nav className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-blue-600">
-            디자이너스 소장템
-          </Link>
+  const { user, logout } = useAuth();
 
-          {/* Main Menu */}
-          <div className="hidden md:flex space-x-8">
-            <Link href="/collection" className="text-gray-700 hover:text-blue-600">
-              컬렉션
-            </Link>
-            <Link href="/auction" className="text-gray-700 hover:text-blue-600">
-              경매
-            </Link>
-            <Link href="/ai-recommend" className="text-gray-700 hover:text-blue-600">
-              AI 추천
-            </Link>
-            <Link href="/community" className="text-gray-700 hover:text-blue-600">
-              커뮤니티
+  return (
+    <nav className="bg-white shadow">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex">
+            <Link href="/" className="flex-shrink-0 flex items-center">
+              <span className="text-xl font-bold text-blue-600">Legendary</span>
             </Link>
           </div>
-
-          {/* Right Icons */}
-          <div className="flex items-center space-x-4">
-            <button className="p-2 hover:bg-gray-100 rounded-full">
-              <MagnifyingGlassIcon className="h-6 w-6 text-gray-600" />
-            </button>
-            <button className="p-2 hover:bg-gray-100 rounded-full">
-              <UserCircleIcon className="h-6 w-6 text-gray-600" />
-            </button>
+          <div className="flex items-center">
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-gray-700">{user.name}님</span>
+                <button
+                  onClick={() => logout()}
+                  className="text-gray-700 hover:text-gray-900"
+                >
+                  로그아웃
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <Link
+                  href="/auth/login"
+                  className="text-gray-700 hover:text-gray-900"
+                >
+                  로그인
+                </Link>
+                <Link
+                  href="/auth/register"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                >
+                  회원가입
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
