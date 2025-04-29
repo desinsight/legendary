@@ -1,17 +1,7 @@
 import ItemCard from "./ItemCard";
+import { Item as BaseItem, Creator } from "@/types/item";
 
-interface Creator {
-  name: string;
-  imageUrl: string;
-}
-
-interface Item {
-  id: string;
-  title: string;
-  imageUrl: string;
-  price: number;
-  season?: string;
-  edition?: string;
+interface Item extends Omit<BaseItem, 'creator'> {
   creator: Creator;
 }
 

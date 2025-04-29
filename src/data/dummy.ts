@@ -1,18 +1,5 @@
 import { Collection, Item } from '@/types/item';
 
-export interface Item {
-  id: string;
-  title: string;
-  imageUrl: string;
-  images: {
-    url: string;
-    alt: string;
-  }[];
-  price: number;
-  creator: string;
-  description: string;
-}
-
 export const dummyItems: Item[] = [
   {
     id: "1",
@@ -91,43 +78,47 @@ export const collections: Collection[] = [
 
 export const items: Item[] = [
   {
-    id: 101, 
-    collection: 1, 
-    name: "Supreme x LV Box Logo",
-    artist: "Supreme/LV", 
+    id: "101",
+    title: "Supreme x LV Box Logo",
+    imageUrl: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&w=400&q=80",
+    images: [
+      { url: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&w=400&q=80", alt: "Supreme x LV Box Logo" }
+    ],
     price: 5200000,
-    img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&w=400&q=80",
-    highBid: 5600000,
-    auction: true
+    creator: "Supreme/LV",
+    description: "Supreme와 Louis Vuitton의 콜라보레이션 한정판 박스 로고 티셔츠"
   },
   {
-    id: 102,
-    collection: 1,
-    name: "Nike Air Yeezy 2 Red October",
-    artist: "Nike",
+    id: "102",
+    title: "Nike Air Yeezy 2 Red October",
+    imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&w=400&q=80",
+    images: [
+      { url: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&w=400&q=80", alt: "Nike Air Yeezy 2 Red October" }
+    ],
     price: 8900000,
-    img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&w=400&q=80",
-    highBid: 9200000,
-    auction: true
+    creator: "Nike",
+    description: "Kanye West와 Nike의 콜라보레이션으로 제작된 레드 컬러의 한정판 스니커즈"
   },
   {
-    id: 201,
-    collection: 2,
-    name: "LEVI'S Type I 1940s",
-    artist: "Levi's",
+    id: "201",
+    title: "LEVI'S Type I 1940s",
+    imageUrl: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&w=400&q=80",
+    images: [
+      { url: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&w=400&q=80", alt: "LEVI'S Type I 1940s" }
+    ],
     price: 2700000,
-    img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&w=400&q=80",
-    highBid: null,
-    auction: false
+    creator: "Levi's",
+    description: "1940년대에 제작된 LEVI'S의 오리지널 데님 자켓"
   },
   {
-    id: 301,
-    collection: 3,
-    name: "Maison Margiela Artisanal Blazer",
-    artist: "Margiela",
+    id: "301",
+    title: "Maison Margiela Artisanal Blazer",
+    imageUrl: "https://images.unsplash.com/photo-1475189778702-5ec9941484ae?auto=format&w=400&q=80",
+    images: [
+      { url: "https://images.unsplash.com/photo-1475189778702-5ec9941484ae?auto=format&w=400&q=80", alt: "Maison Margiela Artisanal Blazer" }
+    ],
     price: 4100000,
-    img: "https://images.unsplash.com/photo-1475189778702-5ec9941484ae?auto=format&w=400&q=80",
-    highBid: null,
-    auction: false
+    creator: "Margiela",
+    description: "Maison Margiela의 아르티자날 컬렉션에서 제작된 한정판 블레이저"
   }
 ];

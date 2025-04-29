@@ -43,7 +43,9 @@ export default function Home() {
           id: item.id,
           title: item.title,
           imageUrl: item.imageUrl,
-          price: 0,
+          images: item.images,
+          price: item.price,
+          description: item.description,
           season: "2023 SS",
           edition: "Limited Edition",
           creator: {

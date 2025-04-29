@@ -1,12 +1,21 @@
-export interface Item {
-  id: number;
-  collection: number;
+export interface Creator {
   name: string;
-  artist: string;
+  imageUrl: string;
+}
+
+export interface Item {
+  id: string;
+  title: string;
+  imageUrl: string;
+  images: {
+    url: string;
+    alt: string;
+  }[];
   price: number;
-  img: string;
-  highBid: number | null;
-  auction: boolean;
+  creator: string;
+  description: string;
+  season?: string;
+  edition?: string;
 }
 
 export interface Collection {

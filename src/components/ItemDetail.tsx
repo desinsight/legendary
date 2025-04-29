@@ -6,19 +6,10 @@ import { SparklesIcon, UsersIcon, UserIcon } from "@heroicons/react/24/outline";
 import InterpretationModal from "@/components/InterpretationModal";
 import ImageGallery from "@/components/ImageGallery";
 import { dummyItems } from "@/data/dummy";
+import { Item } from '@/types/item';
 
 interface ItemDetailProps {
-  item: {
-    id: string;
-    title: string;
-    description: string;
-    creator: string;
-    imageUrl: string;
-    images: {
-      url: string;
-      alt: string;
-    }[];
-  };
+  item: Item;
 }
 
 export default function ItemDetail({ item }: ItemDetailProps) {
