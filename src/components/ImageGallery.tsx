@@ -75,7 +75,9 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     {
       drag: {
         threshold: 50,
-        swipeDistance: 40,
+        swipe: {
+          distance: 40
+        },
         filterTaps: true,
       },
     }

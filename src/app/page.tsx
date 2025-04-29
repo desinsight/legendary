@@ -7,19 +7,22 @@ export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
-      <div className="relative h-[60vh] mb-16 rounded-3xl overflow-hidden">
+      <div className="relative h-[70vh] mb-16 rounded-3xl overflow-hidden">
         <Image
-          src="/images/hero-bg.svg"
-          alt="Hero background"
+          src="https://img.vogue.co.kr/vogue/2019/07/style_5d3678b06142e.jpg"
+          alt="Hero background - Fashion Gallery"
           fill
+          sizes="100vw"
+          quality={90}
+          priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex flex-col justify-center p-12">
-          <h1 className="text-5xl font-bold text-white mb-6">
-            Discover Unique<br />Digital Frames
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30 flex flex-col justify-center p-12">
+          <h1 className="text-6xl font-bold text-white mb-6 leading-tight">
+            Discover Unique<br />Legendary Fashion Collection
           </h1>
           <p className="text-xl text-gray-200 mb-8 max-w-xl">
-            Explore our curated collection of digital frames, from classic designs to AI-generated masterpieces.
+            Explore our curated collection of fashion items, from classic designs to limited editions.
           </p>
           <button className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors w-fit">
             Start Exploring
@@ -77,17 +80,38 @@ export default function Home() {
       <div>
         <h2 className="text-3xl font-bold mb-8">Browse Categories</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {['Collection', 'Auction', 'AI Generated', 'Community'].map((category, index) => (
+          {[
+            {
+              name: 'Collection',
+              image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+              name: 'Auction',
+              image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+              name: 'AI Generated',
+              image: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+              name: 'Community',
+              image: 'https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=800&q=80'
+            }
+          ].map((category, index) => (
             <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group">
               <Image
-                src={`/images/category-${index + 1}.svg`}
-                alt={category}
+                src={category.image}
+                alt={category.name}
                 fill
-                className="object-cover transition-transform group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                quality={90}
+                unoptimized={true}
               />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <h3 className="text-white text-xl font-semibold">{category}</h3>
+                  <h3 className="text-white text-2xl font-semibold drop-shadow-lg">{category.name}</h3>
                 </div>
               </div>
             </div>
