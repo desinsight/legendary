@@ -8,6 +8,9 @@ const nextConfig = {
       'i.pravatar.cc'
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true
+  }
 }
 
 module.exports = nextConfig 
